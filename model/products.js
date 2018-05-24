@@ -4,10 +4,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/node-api');
 // create a schema
 var productSchema = new Schema({
     _id:mongoose.Schema.Types.ObjectId,
-    name: String,
-    price:Number,
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    name:{type:String,required:true},
+    price:{type:Number,required:true},
+    created_at: Date,
     admin: Boolean,
     location: String,
     meta: {
@@ -16,9 +15,6 @@ var productSchema = new Schema({
     }
 });
 
-// the schema is useless so far
-// we need to create a model using it
 var product = mongoose.model('product', productSchema);
 
-// make this available to our users in our Node applications
 module.exports = product;
